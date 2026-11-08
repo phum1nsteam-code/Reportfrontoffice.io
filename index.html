@@ -4,59 +4,80 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>EASY HOTEL | Daily Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-  <h1>EASY HOTEL</h1>
-  <p>DAILY OPERATIONS DASHBOARD</p>
+  <div class="wrap">
+    <div class="brand">
+      <img src="logo.png" alt="Easy Hotel">
+      <div>
+        <h1>EASY HOTEL</h1>
+        <p>รายงานการดำเนินงานประจำวัน</p>
+      </div>
+    </div>
+    <div class="date">
+      <span id="dateLabel"></span>
+      <label for="date">วันที่รายงาน</label>
+      <input type="date" id="date">
+    </div>
+  </div>
 </header>
 
 <nav>
-  <button class="active" onclick="showPage('today',this)">ห้องพักวันนี้</button>
-  <button onclick="showPage('tomorrow',this)">ห้องพักพรุ่งนี้</button>
-  <button onclick="showPage('cash',this)">รายงานเงินกะ</button>
+  <div class="wrap">
+    <button class="active" onclick="showPage('today',this)">ห้องพักวันนี้</button>
+    <button onclick="showPage('tomorrow',this)">ห้องพักพรุ่งนี้</button>
+    <button onclick="showPage('cash',this)">รายงานเงินกะ</button>
+  </div>
 </nav>
 
-<main>
-  <div class="date">
-    วันที่รายงาน
-    <input type="date" id="date">
-  </div>
+<main class="wrap">
 
   <!-- TODAY -->
   <section id="today" class="page active">
     <h2>รายงานห้องพักวันนี้</h2>
 
-    <div class="grid">
-      <label>จำนวนห้องทั้งหมด
-        <input id="total" type="number" value="76" min="0">
-      </label>
-      <label>ฐานคำนวณเปอร์เซ็นต์
-        <input id="baseToday" type="number" value="76" min="0">
-      </label>
-      <label>ห้องเสีย
-        <input id="offToday" type="number" value="0" min="0">
-      </label>
-      <label>ขายได้วันนี้
-        <input id="sold" type="number" value="0" min="0">
-      </label>
-      <label>พักต่อเนื่อง
-        <input id="continueToday" type="number" value="0" min="0">
-      </label>
-      <label>รายเดือน
-        <input id="monthlyToday" type="number" value="0" min="0">
-      </label>
-      <label>เตียงเสริม
-        <input id="extraToday" type="number" value="0" min="0">
-      </label>
+    <div class="results">
+      <div class="hero">
+        <div class="ring" id="ringToday"><strong id="percentToday">0%</strong></div>
+        <div class="text"><b>อัตราการเข้าพัก</b>Occupancy</div>
+        <div class="mini">
+          <span>ห้องเข้าพัก<strong id="occupiedToday">0</strong></span>
+          <span>ห้องว่าง<strong id="vacantToday">0</strong></span>
+        </div>
+      </div>
     </div>
 
-    <div class="results">
-      <div>ห้องเข้าพัก <strong id="occupiedToday">0</strong></div>
-      <div>ห้องว่าง <strong id="vacantToday">0</strong></div>
-      <div>Occupancy <strong id="percentToday">0%</strong></div>
+    <div class="panel">
+      <h3>ข้อมูลนำเข้า</h3>
+      <div class="grid">
+        <label>จำนวนห้องทั้งหมด
+          <input id="total" type="number" value="76" min="0">
+        </label>
+        <label>ฐานคำนวณเปอร์เซ็นต์
+          <input id="baseToday" type="number" value="76" min="0">
+        </label>
+        <label>ห้องเสีย
+          <input id="offToday" type="number" value="0" min="0">
+        </label>
+        <label>ขายได้วันนี้
+          <input id="sold" type="number" value="0" min="0">
+        </label>
+        <label>พักต่อเนื่อง
+          <input id="continueToday" type="number" value="0" min="0">
+        </label>
+        <label>รายเดือน
+          <input id="monthlyToday" type="number" value="0" min="0">
+        </label>
+        <label>เตียงเสริม
+          <input id="extraToday" type="number" value="0" min="0">
+        </label>
+      </div>
     </div>
   </section>
 
@@ -64,35 +85,43 @@
   <section id="tomorrow" class="page">
     <h2>รายงานห้องพักพรุ่งนี้</h2>
 
-    <div class="grid">
-      <label>จองยืนยันแล้ว
-        <input id="confirmed" type="number" value="0" min="0">
-      </label>
-      <label>รอการยืนยัน
-        <input id="pending" type="number" value="0" min="0">
-      </label>
-      <label>พักต่อเนื่อง
-        <input id="continueTomorrow" type="number" value="0" min="0">
-      </label>
-      <label>รายเดือน
-        <input id="monthlyTomorrow" type="number" value="0" min="0">
-      </label>
-      <label>ห้องเสีย
-        <input id="offTomorrow" type="number" value="0" min="0">
-      </label>
-      <label>ฐานคำนวณเปอร์เซ็นต์
-        <input id="baseTomorrow" type="number" value="76" min="0">
-      </label>
-    </div>
-
     <div class="results">
+      <div class="hero">
+        <div class="ring" id="ringTomorrow"><strong id="percentTomorrow">0%</strong></div>
+        <div class="text"><b>อัตราเข้าพักที่คาดการณ์</b>Forecast occupancy</div>
+        <div class="mini">
+          <span>รวมคาดการณ์<strong id="forecast">0</strong></span>
+          <span>ห้องว่าง<strong id="vacantTomorrow">0</strong></span>
+        </div>
+      </div>
       <div>รวมจองยืนยัน <strong id="confirmedResult">0</strong></div>
       <div>รวมรอยืนยัน <strong id="pendingResult">0</strong></div>
       <div>รวมพักต่อ <strong id="continueResult">0</strong></div>
       <div>รวมรายเดือน <strong id="monthlyResult">0</strong></div>
-      <div>รวมคาดการณ์ <strong id="forecast">0</strong></div>
-      <div>ห้องว่าง <strong id="vacantTomorrow">0</strong></div>
-      <div>Occupancy <strong id="percentTomorrow">0%</strong></div>
+    </div>
+
+    <div class="panel">
+      <h3>ข้อมูลนำเข้า</h3>
+      <div class="grid">
+        <label>จองยืนยันแล้ว
+          <input id="confirmed" type="number" value="0" min="0">
+        </label>
+        <label>รอการยืนยัน
+          <input id="pending" type="number" value="0" min="0">
+        </label>
+        <label>พักต่อเนื่อง
+          <input id="continueTomorrow" type="number" value="0" min="0">
+        </label>
+        <label>รายเดือน
+          <input id="monthlyTomorrow" type="number" value="0" min="0">
+        </label>
+        <label>ห้องเสีย
+          <input id="offTomorrow" type="number" value="0" min="0">
+        </label>
+        <label>ฐานคำนวณเปอร์เซ็นต์
+          <input id="baseTomorrow" type="number" value="76" min="0">
+        </label>
+      </div>
     </div>
   </section>
 
@@ -100,31 +129,40 @@
   <section id="cash" class="page">
     <h2>รายงานเงินกะ</h2>
 
-    <div class="grid">
-      <label>เงินสดห้องพัก กะกลางวัน
-        <input id="dayRoom" type="number" min="0">
-      </label>
-      <label>เงินสดของชำ กะกลางวัน
-        <input id="dayShop" type="number" min="0">
-      </label>
-      <label>ผู้รายงานกะกลางวัน
-        <input id="dayStaff">
-      </label>
-      <label>เงินสดห้องพัก กะกลางคืน
-        <input id="nightRoom" type="number" min="0">
-      </label>
-      <label>เงินสดของชำ กะกลางคืน
-        <input id="nightShop" type="number" min="0">
-      </label>
-      <label>ผู้รายงานกะกลางคืน
-        <input id="nightStaff">
-      </label>
-    </div>
-
     <div class="results">
+      <div class="hero">
+        <div class="text"><b>เงินสดรวมทั้งวัน</b>Total cash</div>
+        <div class="mini">
+          <span>เงินสดรวม<strong id="grandTotal">฿0</strong></span>
+        </div>
+      </div>
       <div>รวมกะกลางวัน <strong id="dayTotal">฿0</strong></div>
       <div>รวมกะกลางคืน <strong id="nightTotal">ยังไม่กรอก</strong></div>
-      <div>เงินสดรวม <strong id="grandTotal">฿0</strong></div>
+    </div>
+
+    <div class="panel">
+      <h3>ข้อมูลนำเข้า</h3>
+      <div class="grid">
+        <label>เงินสดห้องพัก กะกลางวัน
+          <input id="dayRoom" type="number" min="0">
+        </label>
+        <label>เงินสดของชำ กะกลางวัน
+          <input id="dayShop" type="number" min="0">
+        </label>
+        <label>ผู้รายงานกะกลางวัน
+          <input id="dayStaff">
+        </label>
+        <div class="divider"></div>
+        <label>เงินสดห้องพัก กะกลางคืน
+          <input id="nightRoom" type="number" min="0">
+        </label>
+        <label>เงินสดของชำ กะกลางคืน
+          <input id="nightShop" type="number" min="0">
+        </label>
+        <label>ผู้รายงานกะกลางคืน
+          <input id="nightStaff">
+        </label>
+      </div>
     </div>
   </section>
 
@@ -132,12 +170,10 @@
     <button onclick="saveReport()">บันทึกข้อมูล</button>
     <button onclick="exportCSV()">Export CSV</button>
     <button onclick="window.print()">พิมพ์รายงาน</button>
+    <p id="status" role="status"></p>
   </div>
-
-  <p id="status"></p>
 </main>
 
 <script src="app.js"></script>
 </body>
 </html>
-
